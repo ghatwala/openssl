@@ -40,8 +40,9 @@ matrix:
           arch: s390x
           compiler: gcc
           env: CONFIG_OPTS="--strict-warnings"
-        - os: linux-ppc64le
-          sudo: false
+        - os: linux
+          arch: ppc64le
+        # sudo: false
           compiler: clang
           env: CONFIG_OPTS="--strict-warnings -D__NO_STRING_INLINES"
         - os: linux
@@ -65,10 +66,11 @@ matrix:
           env: CONFIG_OPTS="no-stdio" BUILDONLY="yes"
         # Uncomment if there is reason to believe that PPC-specific problem
         # can be diagnosed with this possibly >30 mins sanitizer build...
-        #- os: linux-ppc64le
-        #  sudo: false
-        #  compiler: gcc
-        #  env: EXTENDED_TEST="yes" CONFIG_OPTS="no-asm enable-asan enable-ubsan no-shared -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION -D__NO_STRING_INLINES"
+        - os: linux
+          arch: ppc64le
+        # sudo: false
+          compiler: gcc
+          env: EXTENDED_TEST="yes" CONFIG_OPTS="no-asm enable-asan enable-ubsan no-shared -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION -D__NO_STRING_INLINES"
         - os: linux
           addons:
               apt:
